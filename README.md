@@ -46,7 +46,7 @@ Utilize os testes para checar o funcionamento de cada atividade.
 
 Você deve implementar um sombreamento básico considerando apenas a direção e cor das luzes. Você também deve realizar ajuste de gamma (RGB->sRGB) do frame final.
 
-- [ ] urenderer/renderer/opengl/opengl_renderer.py:
+- [X] urenderer/renderer/opengl/opengl_renderer.py:
   - Realize ajuste de gamma (`__init__`)
   - Envie as informações das luzes na cena para o shader (`render_valid_node`)
 - [ ] entrypoints/01-light_direction.py: edite os arquivos indicados pelo entrypoint
@@ -69,7 +69,7 @@ Adicione luz especular ao modelo de sombreamento.
 
 Adicione luz ambiente constante ao modelo de sombreamento.
 
-- [ ] urenderer/renderer/opengl/opengl_renderer.py: envie a cor ambiente para o shader (`render_valid_node`)
+- [X] urenderer/renderer/opengl/opengl_renderer.py: envie a cor ambiente para o shader (`render_valid_node`)
 - [ ] entrypoints/04-ambient.py: edite os arquivos indicados pelo entrypoint
 
 ### 05 - Materiais

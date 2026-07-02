@@ -66,7 +66,7 @@ class OpenGLRenderer(Renderer):
 
         ## SEU CÓDIGO AQUI ######################################################
         # Habilite o uso de GL_FRAMEBUFFER_SRGB para convertor cores para sRGB
-
+        GL.glEnable(GL.GL_FRAMEBUFFER_SRGB)
         #########################################################################
 
         glfw.set_framebuffer_size_callback(
@@ -178,14 +178,15 @@ class OpenGLRenderer(Renderer):
         for i, light_info in enumerate(self._lights):
             light = cast(Light, light_info["node"])
             light_position = cast(np.ndarray, light_info["position"])
-
+            material.shader.set_uniform(f"light[{i}].type", light.type.value)
+            material.shader.set_uniform(f"light[{i}].position", light_position)
         #########################################################################
 
         ## SEU CÓDIGO AQUI ######################################################
         # Defina a uniform ambientColor para self.ambient_color
         #
         # Utilize o método set_uniform do shader
-
+        material.shader.set_uniform("ambientColor", self.ambient_color)
         #########################################################################
 
         mesh.draw()
