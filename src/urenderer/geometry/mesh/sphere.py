@@ -24,8 +24,8 @@ def get_mesh_sphere() -> Mesh:
         y = vertices[i, 1]
         z = vertices[i, 2]
 
-        u = 0.5 + np.atan2(z, x) / (2*np.pi)
-        v = 0.5 - np.asin(y) / np.pi
+        u = 0.5 + np.arctan2(z, x) / (2*np.pi)
+        v = 0.5 - np.arcsin(y) / np.pi
 
         uv[i, 0] = u
         uv[i, 1] = v
