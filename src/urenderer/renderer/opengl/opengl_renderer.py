@@ -178,8 +178,12 @@ class OpenGLRenderer(Renderer):
         for i, light_info in enumerate(self._lights):
             light = cast(Light, light_info["node"])
             light_position = cast(np.ndarray, light_info["position"])
-            material.shader.set_uniform(f"light[{i}].type", light.type.value)
-            material.shader.set_uniform(f"light[{i}].position", light_position)
+            
+            material.shader.set_uniform(f"lights[{i}].position", light_position)
+            material.shader.set_uniform(f"lights[{i}].type", light.light_type.value)
+            material.shader.set_uniform(f"lights[{i}].color", light.light_color)
+            material.shader.set_uniform(f"lights[{i}].referenceDistance", light.light_reference_distance)
+            material.shader.set_uniform(f"lights[{i}].intensity", light.light_intensity)
         #########################################################################
 
         ## SEU CÓDIGO AQUI ######################################################
