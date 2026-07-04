@@ -9,6 +9,7 @@ from OpenGL import GL
 
 from urenderer.geometry.mesh import Mesh
 from urenderer.node import Camera, Light, Node
+from urenderer.node.light import LightType
 from urenderer.renderer.renderer import Renderer
 from urenderer.utils import get_filename_unique
 
@@ -182,8 +183,10 @@ class OpenGLRenderer(Renderer):
             material.shader.set_uniform(f"lights[{i}].position", light_position)
             material.shader.set_uniform(f"lights[{i}].type", light.light_type.value)
             material.shader.set_uniform(f"lights[{i}].color", light.light_color)
-            material.shader.set_uniform(f"lights[{i}].referenceDistance", light.light_reference_distance)
+            material.shader.set_uniform(f"lights[{i}].reference_distance", light.light_reference_distance)
             material.shader.set_uniform(f"lights[{i}].intensity", light.light_intensity)
+            if (light.light_type == LightType.DIRECTIONAL):
+                material.shader.set_uniform(f"lights[{i}].direction", light.light_direction)
         #########################################################################
 
         ## SEU CÓDIGO AQUI ######################################################

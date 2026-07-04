@@ -36,7 +36,8 @@ void main()
 
 
         //Calcule a contribuição da luz e acumule na color
-        vec3 lightContribution = PI * lightColor * attenuation * light.intensity * max(dot(lightDirection, worldNormalNormalized), 0.0f)/1.0f;
+        float diff = max(dot(worldNormalNormalized, lightDirection), 0.0);
+        vec3 lightContribution = PI * lightColor * attenuation * diff;
         color += lightContribution;
     }
 
