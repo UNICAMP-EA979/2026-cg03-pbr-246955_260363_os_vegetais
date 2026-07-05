@@ -88,7 +88,6 @@ Após realizar o entrypoint, observe o resultado. São renderizadas 4 esferas, 2
 > Materiais 100% metálicos possuem cor difusa (p_ss) 0 e, por conta disso, seus fragmentos não recebem contribuição da luz difusa nem da luz ambiente, apenas da luz especular. Uma forma de resolver isso seria aplicar uma skybox (ou cubemap) à cena, pois ela introduz a informação de iluminação ambiente de cada direção, fazendo com que a esfera metálica passe a refletir essas informações e não apenas um o fundo preto.
 
 
-
 ## Executando o código
 
 1. Instale o pacote na pasta raiz do repositório: `python -m pip install -e .`
