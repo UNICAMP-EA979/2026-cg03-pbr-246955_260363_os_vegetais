@@ -12,7 +12,7 @@ vec3 specularReflectance(vec3 fresnel, vec3 normal, vec3 halfAngle, vec3 viewDir
     float normalView = max(dot(normal, viewDirection), 0.0001); // para evitar divisão por 0
     float lightNormal = max(dot(normal, lightDirection), 0.0001);
 
-    return (fresnel * (alpha + 2) / 8 * pow(normalHalf, alpha)) / (normalView * lightNormal);
+    return (fresnel * (alpha + 2) / (8 * PI) * pow(normalHalf, alpha)) / (normalView * lightNormal);
 }
 
 #define LIBRARY_SPECULAR
