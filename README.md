@@ -49,7 +49,7 @@ Você deve implementar um sombreamento básico considerando apenas a direção e
 - [X] urenderer/renderer/opengl/opengl_renderer.py:
   - Realize ajuste de gamma (`__init__`)
   - Envie as informações das luzes na cena para o shader (`render_valid_node`)
-- [ ] entrypoints/01-light_direction.py: edite os arquivos indicados pelo entrypoint
+- [X] entrypoints/01-light_direction.py: edite os arquivos indicados pelo entrypoint
 
 Observe que o vetor normal é um vetor de direção, portanto sua representação em coordenadas homogêneas é $[x, y, z, 0]$, e que ele deve ser normalizado tanto antes quanto depois da interpolação do vértice para o fragmento. 
 
@@ -57,26 +57,26 @@ Observe que o vetor normal é um vetor de direção, portanto sua representaçã
 
 Adicione luz difusa ao modelo de sombreamento.
 
-- [ ] entrypoints/02-diffuse.py: edite os arquivos indicados pelo entrypoint
+- [X] entrypoints/02-diffuse.py: edite os arquivos indicados pelo entrypoint
 
 ### 03 - Luz Especular
 
 Adicione luz especular ao modelo de sombreamento.
 
-- [ ] entrypoints/03-specular.py: edite os arquivos indicados pelo entrypoint
+- [X] entrypoints/03-specular.py: edite os arquivos indicados pelo entrypoint
 
 ### 04 - Luz Ambiente
 
 Adicione luz ambiente constante ao modelo de sombreamento.
 
 - [X] urenderer/renderer/opengl/opengl_renderer.py: envie a cor ambiente para o shader (`render_valid_node`)
-- [ ] entrypoints/04-ambient.py: edite os arquivos indicados pelo entrypoint
+- [X] entrypoints/04-ambient.py: edite os arquivos indicados pelo entrypoint
 
 ### 05 - Materiais
 
 Adicione suporte à texturas para definir os parâmetros da superfície.
 
-- [ ] entrypoints/05-materials.py: edite os arquivos indicados pelo entrypoint
+- [X] entrypoints/05-materials.py: edite os arquivos indicados pelo entrypoint
 
 Observe que o entrypoint instancia duas texturas de "base color", ambas com parâmetro `srgb=True`. Isso especifica o formato da textura como sRGB para realizar a correção de gama (sRGB->RGB) antes de ser utilizada.
 
@@ -85,7 +85,7 @@ A atividade solicita para implementar _tiling_ de texturas. Essa é uma técnica
 **Pergunta**
 Após realizar o entrypoint, observe o resultado. São renderizadas 4 esferas, 2 dielétricas, uma metálica e uma entre metálico e dielétrico. A esfere metálica quase não é visível, por quê? Qual técnica vista em aula poderia ser aplicada para melhorar sua renderização?
 
-> Resposta
+> Materiais 100% metálicos possuem cor difusa (p_ss) 0 e, por conta disso, seus fragmentos não recebem contribuição da luz difusa nem da luz ambiente, apenas da luz especular. Uma forma de resolver isso seria aplicar uma skybox (ou cubemap) à cena, pois ela introduz a informação de iluminação ambiente de cada direção, fazendo com que a esfera metálica passe a refletir essas informações e não apenas um o fundo preto.
 
 
 
