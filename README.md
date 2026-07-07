@@ -1,3 +1,4 @@
+[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=24172100&assignment_repo_type=AssignmentRepo)
 # PBR
 
 Nesta tarefa iremos implementar um modelo de sombreamento PBR. O modelo irá possuir luz difusa utilizando o modelo de Lambert e luz especular utilizando o modelo de Blinn-Phong. Também irá suportar o uso de luzes direcionais, pontuais (point light) e ambiente.
@@ -20,16 +21,16 @@ Alguns códigos de shaders possuem a diretiva de pré-processador `#include "nom
 
 Copie os arquivos da tarefa anterior:
 
-- [ ] urenderer/node/node.py
-- [ ] urenderer/node/camera.py
-- [ ] urenderer/aplication/runtime.py: copie **apenas** as funções que implementou na última tarefa.
-- [ ] urenderer/renderer/opengl/texture.py: copiar métodos bind_at_unit e __init__
+- [X] urenderer/node/node.py
+- [X] urenderer/node/camera.py
+- [X] urenderer/aplication/runtime.py: copie **apenas** as funções que implementou na última tarefa.
+- [X] urenderer/renderer/opengl/texture.py: copiar métodos bind_at_unit e __init__
 
-- [ ] urenderer/renderer/opengl/shader.py: 
+- [X] urenderer/renderer/opengl/shader.py: 
   - copiar método use	
   - copiar códigos de compilação e linkagem do shader no __init__ (não copiar método inteiro)
 
-- [ ] urenderer/renderer/opengl/opengl_renderer.py:
+- [X] urenderer/renderer/opengl/opengl_renderer.py:
   - copiar códigos de inicialização do GLFW, janela e contexto no __init__ (não copiar método inteiro)
   - copiar código de inicialização dos buffers de cor de profundidade no start (não copiar método inteiro)
   - render_valid_node: copiar definição das matrizes de transformação do shader (não copiar método inteiro)
@@ -45,10 +46,10 @@ Utilize os testes para checar o funcionamento de cada atividade.
 
 Você deve implementar um sombreamento básico considerando apenas a direção e cor das luzes. Você também deve realizar ajuste de gamma (RGB->sRGB) do frame final.
 
-- [ ] urenderer/renderer/opengl/opengl_renderer.py:
+- [X] urenderer/renderer/opengl/opengl_renderer.py:
   - Realize ajuste de gamma (`__init__`)
   - Envie as informações das luzes na cena para o shader (`render_valid_node`)
-- [ ] entrypoints/01-light_direction.py: edite os arquivos indicados pelo entrypoint
+- [X] entrypoints/01-light_direction.py: edite os arquivos indicados pelo entrypoint
 
 Observe que o vetor normal é um vetor de direção, portanto sua representação em coordenadas homogêneas é $[x, y, z, 0]$, e que ele deve ser normalizado tanto antes quanto depois da interpolação do vértice para o fragmento. 
 
@@ -56,26 +57,26 @@ Observe que o vetor normal é um vetor de direção, portanto sua representaçã
 
 Adicione luz difusa ao modelo de sombreamento.
 
-- [ ] entrypoints/02-diffuse.py: edite os arquivos indicados pelo entrypoint
+- [X] entrypoints/02-diffuse.py: edite os arquivos indicados pelo entrypoint
 
 ### 03 - Luz Especular
 
 Adicione luz especular ao modelo de sombreamento.
 
-- [ ] entrypoints/03-specular.py: edite os arquivos indicados pelo entrypoint
+- [X] entrypoints/03-specular.py: edite os arquivos indicados pelo entrypoint
 
 ### 04 - Luz Ambiente
 
 Adicione luz ambiente constante ao modelo de sombreamento.
 
-- [ ] urenderer/renderer/opengl/opengl_renderer.py: envie a cor ambiente para o shader (`render_valid_node`)
-- [ ] entrypoints/04-ambient.py: edite os arquivos indicados pelo entrypoint
+- [X] urenderer/renderer/opengl/opengl_renderer.py: envie a cor ambiente para o shader (`render_valid_node`)
+- [X] entrypoints/04-ambient.py: edite os arquivos indicados pelo entrypoint
 
 ### 05 - Materiais
 
 Adicione suporte à texturas para definir os parâmetros da superfície.
 
-- [ ] entrypoints/05-materials.py: edite os arquivos indicados pelo entrypoint
+- [X] entrypoints/05-materials.py: edite os arquivos indicados pelo entrypoint
 
 Observe que o entrypoint instancia duas texturas de "base color", ambas com parâmetro `srgb=True`. Isso especifica o formato da textura como sRGB para realizar a correção de gama (sRGB->RGB) antes de ser utilizada.
 
@@ -84,8 +85,7 @@ A atividade solicita para implementar _tiling_ de texturas. Essa é uma técnica
 **Pergunta**
 Após realizar o entrypoint, observe o resultado. São renderizadas 4 esferas, 2 dielétricas, uma metálica e uma entre metálico e dielétrico. A esfere metálica quase não é visível, por quê? Qual técnica vista em aula poderia ser aplicada para melhorar sua renderização?
 
-> Resposta
-
+> Materiais 100% metálicos possuem cor difusa (p_ss) 0 e, por conta disso, seus fragmentos não recebem contribuição da luz difusa nem da luz ambiente, apenas da luz especular. Uma forma de resolver isso seria aplicar uma skybox (ou cubemap) à cena, pois ela introduz a informação de iluminação ambiente de cada direção, fazendo com que a esfera metálica passe a refletir essas informações e não apenas um o fundo preto.
 
 
 ## Executando o código
